@@ -21,10 +21,12 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "pg": "^8.11.5",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "sequelize-typescript": "^2.1.6"
   }
 }

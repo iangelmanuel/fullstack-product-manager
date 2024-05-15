@@ -1,17 +1,19 @@
 import express, { Application } from 'express'
+import colors from 'colors'
 import productRoutes from './router/productRoutes'
 import db from './config/db'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 async function connectDB() {
   try {
     await db.authenticate()
     db.sync()
-    console.log('Connection has been established successfully.')
+    console.log(
+      colors.magenta(
+        'Connection has been established successfully.'
+      )
+    )
   } catch (error) {
-    console.log('Error: ', error)
+    console.log(colors.red.bold(`Error: , ${error}`))
   }
 }
 
