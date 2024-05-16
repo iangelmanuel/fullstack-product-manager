@@ -15,7 +15,7 @@ router.get('/', getProducts)
 
 router.get('/:id',
   param('id')
-    .isNumeric().withMessage('ID must be a number'),
+    .isInt().withMessage('ID must be a number'),
 
   handleInputErrors,
   getProductById
@@ -36,7 +36,7 @@ router.post('/',
 
 router.put('/:id',
   param('id')
-    .isNumeric().withMessage('ID must be a number'),
+    .isInt().withMessage('ID must be a number'),
 
   body('name')
     .notEmpty().withMessage('Name is required'),
@@ -55,7 +55,7 @@ router.put('/:id',
 
 router.patch('/:id',
   param('id')
-    .isNumeric().withMessage('ID must be a number'),
+    .isInt().withMessage('ID must be a number'),
 
   body('availability')
     .isBoolean().withMessage('Availability must be a boolean'),
@@ -66,7 +66,7 @@ router.patch('/:id',
 
 router.delete('/:id',
   param('id')
-    .isNumeric().withMessage('ID must be a number'),
+    .isInt().withMessage('ID must be a number'),
 
   handleInputErrors,
   deleteProduct
