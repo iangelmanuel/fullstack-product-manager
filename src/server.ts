@@ -3,7 +3,7 @@ import colors from 'colors'
 import productRoutes from './router/productRoutes'
 import db from './config/db'
 
-async function connectDB() {
+export async function connectDB() {
   try {
     await db.authenticate()
     db.sync()
@@ -13,7 +13,7 @@ async function connectDB() {
       )
     )
   } catch (error) {
-    console.log(colors.red.bold(`Error: , ${error}`))
+    console.log(colors.red.bold('Unable to connect to the database'))
   }
 }
 
