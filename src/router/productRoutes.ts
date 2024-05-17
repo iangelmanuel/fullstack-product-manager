@@ -1,10 +1,11 @@
 import { Router } from 'express'
 import {
   getProducts,
-  createProduct,
   getProductById,
+  createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  updateAvailability
 } from '../handlers/product'
 import { body, param } from 'express-validator'
 import { handleInputErrors } from '../middleware'
@@ -57,11 +58,8 @@ router.patch('/:id',
   param('id')
     .isInt().withMessage('ID must be a number'),
 
-  body('availability')
-    .isBoolean().withMessage('Availability must be a boolean'),
-
   handleInputErrors,
-  updateProduct
+  updateAvailability
 )
 
 router.delete('/:id',
