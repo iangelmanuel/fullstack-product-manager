@@ -1,10 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
-
 import Layout from './Layouts/Layout'
 import NewProductPage, {
   action as newProductAction,
 } from './pages/NewProduct'
-import ProductPage from './pages/Product'
+import ProductPage, { loader as productLoader } from './pages/Product'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +13,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ProductPage />,
+        loader: productLoader,
       },
       {
         path: 'product/create',
