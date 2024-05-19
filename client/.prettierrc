@@ -24,10 +24,9 @@
     "@trivago/prettier-plugin-sort-imports"
   ],
 
-  "importOrderSeparation": true,
   "importOrder": [
-    "^@core/(.*)$",
     "<THIRD_PARTY_MODULES>",
+    "^@core/(.*)$",
     "^@server/(.*)$",
     "^@ui/(.*)$",
     "^[./]"
