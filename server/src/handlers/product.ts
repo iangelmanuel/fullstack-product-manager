@@ -4,7 +4,7 @@ import type { Request, Response } from "express"
 export const getProducts = async (req: Request, res: Response) => {
   const products = await Product.findAll({
     order: [['createdAt', 'DESC']],
-    attributes: { exclude: ['createdAt', 'updatedAt', 'availability'] }
+    attributes: { exclude: ['createdAt', 'updatedAt'] }
   })
 
   return res.status(200).json({ data: products })
