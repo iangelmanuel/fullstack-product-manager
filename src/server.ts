@@ -1,5 +1,7 @@
 import express, { Application } from 'express'
 import colors from 'colors'
+import swaggerUI from 'swagger-ui-express'
+import { swaggerSpec, swaggerUiOptions } from './config/swagger'
 import productRoutes from './router/productRoutes'
 import db from './config/db'
 
@@ -23,5 +25,12 @@ const app: Application = express()
 app.use(express.json())
 
 app.use('/api/products', productRoutes)
+
+// DOCS
+app.use(
+  '/docs',
+  swaggerUI.serve,
+  swaggerUI.setup(swaggerSpec, swaggerUiOptions)
+)
 
 export default app
