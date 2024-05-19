@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import colors from 'colors'
 import cors, { type CorsOptions } from 'cors'
+import morgan from 'morgan'
 import swaggerUI from 'swagger-ui-express'
 import { swaggerSpec, swaggerUiOptions } from './config/swagger'
 import productRoutes from './router/productRoutes'
@@ -41,6 +42,9 @@ app.use(cors(corsOptions))
 
 // MIDDLEWARE
 app.use(express.json())
+
+// MORGAN
+app.use(morgan('dev'))
 
 // ROUTES
 app.use('/api/products', productRoutes)
