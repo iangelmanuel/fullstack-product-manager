@@ -1,11 +1,20 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { ActionFunctionArgs, Link, useLoaderData } from 'react-router-dom'
 import { ProductDetails } from '../components/ProductDetails'
-import { getProducts } from '../services/product-service'
+import {
+  getProducts,
+  toggleAvailability,
+} from '../services/product-service'
 import { Product } from '../types'
 
 export async function loader() {
   const products = await getProducts()
   return products ?? []
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+  const data = Object.fromEntries(await request.formData())
+  await toggleAvailability(+data.id)
+  return null
 }
 
 export default function ProductPage() {
@@ -16,7 +25,7 @@ export default function ProductPage() {
         <h2 className="text-4xl font-black text-slate-500">Productos</h2>
 
         <Link
-          to="/product/create"
+          to="/products/create"
           className="bg-indigo-600 text-white px-4 shadow-sm hover:bg-indigo-500 rounded-md py-2"
         >
           Crear Producto
